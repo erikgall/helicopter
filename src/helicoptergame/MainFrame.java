@@ -1,5 +1,6 @@
 package helicoptergame;
 
+import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 /*
@@ -13,10 +14,22 @@ import javax.swing.JFrame;
  * @author Erik
  */
 public class MainFrame extends JFrame {
+        
+    MainMenu menu;
     
     public MainFrame() {
         
         super("Helicopter Game");
+        
+        getContentPane().setLayout(new BorderLayout());
+        
+        menu = new MainMenu();
+        
+        getContentPane().add(menu);
+        
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(800, 600);
+        setVisible(true);
         
         
     }
