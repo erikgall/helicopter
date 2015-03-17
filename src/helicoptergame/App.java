@@ -11,4 +11,9 @@ package helicoptergame;
  */
 public class App {
     
+    public App() {
+        
+        
+        
+    }
 }
