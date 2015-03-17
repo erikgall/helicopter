@@ -1,21 +1,25 @@
+package helicoptergame;
+
+import javax.swing.JFrame;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package helicoptergame;
 
 /**
  *
  * @author Erik
  */
-public class App {
+public class MainFrame extends JFrame {
     
-    MainFrame mf;
-    
-    public App() {
+    public MainFrame() {
         
-        mf = new MainFrame();
+        super("Helicopter Game");
+        
         
     }
+    
+    
 }
