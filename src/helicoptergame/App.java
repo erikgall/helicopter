@@ -11,9 +11,9 @@ package helicoptergame;
  */
 public class App {
     
-    MainFrame mf;
+    static MainFrame mf;
     
-    public App() {
+    public static void main(String args[]) {
         
         mf = new MainFrame();
         
