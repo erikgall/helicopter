@@ -61,7 +61,7 @@ public class MainFrame extends JFrame implements ActionListener {
             
             timeCounter++;
             
-            sp.loading.setValue(timeCounter * 21);
+            sp.loading.setValue(timeCounter * 19);
                     
             
         }
