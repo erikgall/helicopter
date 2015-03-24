@@ -37,7 +37,7 @@ public class MainFrame extends JFrame implements ActionListener {
         
         menu.startGame.addActionListener(this);
         
-        time = new Timer(1000, this);
+        time = new Timer(100, this);
         getContentPane().add(sp);
         time.start();
         setDefaultCloseOperation(EXIT_ON_CLOSE);

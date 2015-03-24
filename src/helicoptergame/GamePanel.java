@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import java.util.Random;
 
 
  public class GamePanel extends JPanel implements KeyListener, ActionListener {
@@ -38,16 +39,20 @@ import javax.swing.Timer;
         setLayout(null);
         
         //setting helicopter photo
-        helicopterIcon = new ImageIcon("img/helicopter.jpg");
+        helicopterIcon = new ImageIcon("img/helicoptor-animation.gif");
         helicopterLabel = new JLabel();
        
         
         //setting where the helicopter will show up and adding it to the panel
-        helicopterLabel.setBounds(new Rectangle(50, 50, 50, 50));
+        helicopterLabel.setBounds(new Rectangle(50, 50, 75, 35));
         helicopterLabel.setIcon(helicopterIcon);
         add(helicopterLabel);
         addKeyListener(this);
         setFocusable(true);
+        
+        tim = new Timer (1000, this);
+        tim.start();
+       
     }
    
     public void paintComponent(Graphics g)
@@ -71,8 +76,8 @@ import javax.swing.Timer;
                     
                            helicopterY = helicopterLabel.getY();
                            helicopterY -= 20;
-                           helicopterLabel.setBounds(new Rectangle(50, helicopterY, 50, 50));
-                           System.out.println("yew");
+                           helicopterLabel.setBounds(new Rectangle(50, helicopterY, 75, 35));
+                         
                                 
                     }
                  
@@ -82,8 +87,8 @@ import javax.swing.Timer;
    
                            helicopterY = helicopterLabel.getY();
                            helicopterY += 20;
-                           helicopterLabel.setBounds(new Rectangle(50, helicopterY, 50, 50));
-                           System.out.println("yewsssssss");
+                           helicopterLabel.setBounds(new Rectangle(50, helicopterY, 75, 35));
+                          
                                           
                             
                     }
@@ -105,17 +110,34 @@ import javax.swing.Timer;
         
         if(obj == tim)
                 {
-        repaint();
+                    
+                  Random rnd = new Random();
+                  int randomInt = rnd.nextInt(10);
+                  System.out.println(randomInt);
                 }
     }
 
   
 
-    private static class TimerListener {
+     private class TimerListener implements ActionListener
+        {
+           
+            public void actionPerformed(ActionEvent e)
+            {
 
-        public TimerListener() {
+                 if (e.getSource() == tim)
+                {
+                   
+                
+                    
+                }
+
+            
+                
+            
+            }
+
         }
-    }
     
     
    }
