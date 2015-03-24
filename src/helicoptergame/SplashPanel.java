@@ -27,7 +27,7 @@ public class SplashPanel extends JPanel {
         title.setFont(new Font("Serif", BOLD, 54));
         this.add(title);
 
-        ImageIcon img = new ImageIcon("../img/helicopter.jpg");
+        ImageIcon img = new ImageIcon("img/helicopter.jpg");
 
         picture = new JLabel(img);
         picture.setBounds(100, 160, 600, 300);

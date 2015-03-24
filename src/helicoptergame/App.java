@@ -5,6 +5,8 @@
  */
 package helicoptergame;
 
+import java.io.IOException;
+
 /**
  *
  * @author Erik
@@ -13,7 +15,7 @@ public class App {
     
     static MainFrame mf;
     
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException {
         
         mf = new MainFrame();
         

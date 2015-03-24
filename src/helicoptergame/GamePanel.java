@@ -39,7 +39,7 @@ import javax.swing.Timer;
         tim.start();
         
         //setting helicopter photo
-        helicopterIcon = new ImageIcon("../Helicopter_isolated_preview.jpg");
+        helicopterIcon = new ImageIcon("Helicopter_isolated_preview.jpg");
         helicopterLabel = new JLabel(helicopterIcon);
        
         
