@@ -33,6 +33,8 @@ import javax.swing.Timer;
     public GamePanel(int difficulty) throws IOException
     {
      
+        super();
+        
         Timer tim = new Timer(1000, this);
         tim.start();
         
@@ -63,6 +65,25 @@ import javax.swing.Timer;
                         
                       
                            helicopterY = helicopterLabel.getY() + 5;
+                           helicopterLabel.setBounds(50, 50, 50, helicopterY);
+                           add(helicopterLabel);
+                           repaint();
+                          
+                            
+                    }};
+                    Timer existTimer = new Timer(50, existAction);
+                    existTimer.start();
+           
+
+        }
+            if (key == KeyEvent.VK_DOWN) {
+                    ActionListener existAction = new ActionListener() {
+                    
+                        public void actionPerformed(ActionEvent evt) {
+                        
+                      
+                           helicopterY = helicopterLabel.getY() + -5;
+                           helicopterLabel.setBounds(50, 50, 50, helicopterY);
                            add(helicopterLabel);
                            repaint();
                           
