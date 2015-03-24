@@ -24,7 +24,7 @@ public class MainMenu extends JPanel {
         
         setLayout(null);
         
-        ImageIcon img = new ImageIcon("../img/helicopter.jpg");
+        ImageIcon img = new ImageIcon("img/helicopter.jpg");
         
         picture = new JLabel();
         picture.setIcon(img);
