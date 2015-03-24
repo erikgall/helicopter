@@ -1,6 +1,7 @@
 
 package helicoptergame;
 
+import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -26,7 +27,7 @@ import javax.swing.Timer;
     ImageIcon helicopterIcon;
    
   
-    Timer timer;
+    Timer tim;
     TimerListener listener;
     int helicopterX, helicopterY;
      
@@ -34,76 +35,78 @@ import javax.swing.Timer;
     {
      
         super();
-        
-        Timer tim = new Timer(1000, this);
-        tim.start();
+        setLayout(null);
         
         //setting helicopter photo
-        helicopterIcon = new ImageIcon("Helicopter_isolated_preview.jpg");
-        helicopterLabel = new JLabel(helicopterIcon);
+        helicopterIcon = new ImageIcon("img/helicopter.jpg");
+        helicopterLabel = new JLabel();
        
         
         //setting where the helicopter will show up and adding it to the panel
-        helicopterLabel.setBounds(50, 50, 50, 50);
+        helicopterLabel.setBounds(new Rectangle(50, 50, 50, 50));
+        helicopterLabel.setIcon(helicopterIcon);
         add(helicopterLabel);
-        
+        addKeyListener(this);
+        setFocusable(true);
     }
+   
+    public void paintComponent(Graphics g)
+    {
+        super.paintComponent(g);
+        requestFocusInWindow();
+    }
+    
      @Override
     public void keyTyped(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 
+     @Override
     public void keyPressed(KeyEvent e) {
       
            int key = e.getKeyCode();
            
             if (key == KeyEvent.VK_UP) {
-                    ActionListener existAction = new ActionListener() {
                     
-                        public void actionPerformed(ActionEvent evt) {
-                        
-                      
-                           helicopterY = helicopterLabel.getY() + 5;
-                           helicopterLabel.setBounds(50, 50, 50, helicopterY);
-                           add(helicopterLabel);
-                           repaint();
-                          
-                            
-                    }};
-                    Timer existTimer = new Timer(50, existAction);
-                    existTimer.start();
-           
+                           helicopterY = helicopterLabel.getY();
+                           helicopterY -= 20;
+                           helicopterLabel.setBounds(new Rectangle(50, helicopterY, 50, 50));
+                           System.out.println("yew");
+                                
+                    }
+                 
 
-        }
+        
             if (key == KeyEvent.VK_DOWN) {
-                    ActionListener existAction = new ActionListener() {
-                    
-                        public void actionPerformed(ActionEvent evt) {
-                        
-                      
-                           helicopterY = helicopterLabel.getY() + -5;
-                           helicopterLabel.setBounds(50, 50, 50, helicopterY);
-                           add(helicopterLabel);
-                           repaint();
-                          
+   
+                           helicopterY = helicopterLabel.getY();
+                           helicopterY += 20;
+                           helicopterLabel.setBounds(new Rectangle(50, helicopterY, 50, 50));
+                           System.out.println("yewsssssss");
+                                          
                             
-                    }};
-                    Timer existTimer = new Timer(50, existAction);
-                    existTimer.start();
+                    }
+                  
            
 
-        }
+ 
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Object obj = e.getSource();
+        
+        if(obj == tim)
+                {
+        repaint();
+                }
     }
 
   
