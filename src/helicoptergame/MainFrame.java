@@ -3,6 +3,7 @@ package helicoptergame;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
@@ -20,10 +21,11 @@ public class MainFrame extends JFrame implements ActionListener {
         
     MainMenu menu;
     SplashPanel sp;
+    GamePanel gp;
     Timer time;
     int timeCounter = 0;
     
-    public MainFrame() {
+    public MainFrame() throws IOException {
         
         super("Helicopter Game");
         
@@ -31,6 +33,10 @@ public class MainFrame extends JFrame implements ActionListener {
         
         sp = new SplashPanel();
         menu = new MainMenu();
+        gp = new GamePanel(1);
+        
+        menu.startGame.addActionListener(this);
+        
         time = new Timer(1000, this);
         getContentPane().add(sp);
         time.start();
@@ -63,6 +69,15 @@ public class MainFrame extends JFrame implements ActionListener {
             
             sp.loading.setValue(timeCounter * 19);
                     
+            
+        }
+        else if (obj == menu.startGame) {
+            
+            getContentPane().remove(menu);
+            getContentPane().add(gp);
+            
+            validate();
+            repaint();
             
         }
     
