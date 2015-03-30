@@ -56,7 +56,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
                 jumpX = 6;
                 break;
             case "Hard":
-                delay = 50;
+                delay = 30;
                 jumpX = 5;
                 break;
             
@@ -172,7 +172,7 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
             }
             if (block3X <= 0) {
             
-                int opening2 = rdm.nextInt(600);
+                int opening2 = rdm.nextInt(400);
                 
                 block3X = 800;
                 block4X = 800;
