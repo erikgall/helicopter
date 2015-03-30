@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
@@ -33,7 +35,6 @@ public class MainFrame extends JFrame implements ActionListener {
         
         sp = new SplashPanel();
         menu = new MainMenu();
-        gp = new GamePanel(1);
         
         menu.startGame.addActionListener(this);
         
@@ -73,6 +74,12 @@ public class MainFrame extends JFrame implements ActionListener {
         }
         else if (obj == menu.startGame) {
             
+            Object difficulty = menu.difficulty.getSelectedItem();
+            try {
+                gp = new GamePanel(difficulty.toString());
+            } catch (IOException ex) {
+                Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
             getContentPane().remove(menu);
             getContentPane().add(gp);
             

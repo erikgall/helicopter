@@ -23,21 +23,48 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 
     Image background;
     ImageIcon helicopterIcon;
-
+    Random rdm;
     Timer tim;
     int helicopterX, helicopterY;
     int obstacleSeparator = 0;
-    JLabel block1, block2;
+    JLabel block1, block2, block3, block4;
     int block1X = 800;
     int block2X = 800;
+    int block3X = 1000;
+    int block4X = 1000;
     int block1Y = 0;
     int block2Y = 400;
+    int block3Y = 0;
+    int block4Y = 400;
+    int delay = 100;
+    int jumpX = 7;
+    boolean obstactle2Added = false;
 
-    public GamePanel(int difficulty) throws IOException {
+    public GamePanel(String difficulty) throws IOException {
 
         super();
         setLayout(null);
+        
+        switch(difficulty) {
+            
+            case "Easy": 
+            default:
+                delay = 100;
+                break;
+            case "Normal":
+                delay = 65;
+                jumpX = 6;
+                break;
+            case "Hard":
+                delay = 50;
+                jumpX = 5;
+                break;
+            
+            
+        }
 
+        rdm = new Random();
+        
         //setting helicopter photo
         helicopterIcon = new ImageIcon("img/helicoptor-animation.gif");
         helicopterLabel = new JLabel();
@@ -51,26 +78,37 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
         
         block1 = new JLabel("");
         block2 = new JLabel("");
+        block3 = new JLabel("");
+        block4 = new JLabel("");
         
         block1.setBounds(800, 0, 30, 350);
         block2.setBounds(800, 400, 30, 400);
+        block3.setBounds(700, 0, 30, 350);
+        block4.setBounds(700, 400, 30, 400);
 
         block1.setOpaque(true);
         block2.setOpaque(true);
+        block3.setOpaque(true);
+        block4.setOpaque(true);
         
         block1.setBackground(Color.black);
         block2.setBackground(Color.black);
+        block3.setBackground(Color.red);
+        block4.setBackground(Color.red);
         
         setBackground(Color.white);
         
         add(block1);
         add(block2);
+        add(block3);
+        add(block4);
 
-        tim = new Timer(100, this);
+        tim = new Timer(delay, this);
         tim.start();
 
     }
 
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         requestFocusInWindow();
@@ -116,22 +154,37 @@ public class GamePanel extends JPanel implements KeyListener, ActionListener {
 
         if (obj == tim) {
 
-            block1X -= 10;
-            block2X -= 10;
+            block1X -= jumpX;
+            block2X -= jumpX;
+            block3X -= jumpX;
+            block4X -= jumpX;
+            
+            
             if (block1X <= 0) {
                 
-                Random rnd = new Random();
-            
-                int randomInt = rnd.nextInt(400);
+                int opening1 = rdm.nextInt(400);
                 
                 block1X = 800;
                 block2X = 800;
                 
-                block2Y = randomInt + 50;
+                block2Y = opening1 + 50;
             
+            }
+            if (block3X <= 0) {
+            
+                int opening2 = rdm.nextInt(600);
+                
+                block3X = 800;
+                block4X = 800;
+                
+                block4Y = opening2 + 50;
             }
             block1.setBounds(block1X, 0, 30, block2Y-50);
             block2.setBounds(block2X, block2Y, 30, 800 - block2Y);
+
+            block3.setBounds(block3X, 0, 30, block4Y-50);
+            block4.setBounds(block4X, block4Y, 30, 800 - block4Y);
+            
 
             validate();
             repaint();
